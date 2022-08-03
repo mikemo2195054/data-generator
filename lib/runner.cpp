@@ -12,9 +12,7 @@ void runcmd(string s){
 int main(){
     ll i,j;
     runcmd("g++-11 -o Sol Sol.cpp");
-    runcmd("g++-11 -o iG iG.cpp");
-
-    runcmd("rmdir data");
+    runcmd("rm -r data");
     runcmd("mkdir data");
 
     while(true){
@@ -31,7 +29,11 @@ int main(){
             cin>>s;
         }
         for(i=l;i<=r;i++){
-            cmd=s+" < data/data"+to_string(i)+".in";
+            cmd="echo > data/data"+to_string(i)+".in";
+            runcmd(cmd);
+            cmd="echo > data/data"+to_string(i)+".out";
+            runcmd(cmd);
+            cmd=s+" > data/data"+to_string(i)+".in";
             runcmd(cmd);
             cmd="./Sol < data/data"+to_string(i)+".in > data/data"+to_string(i)+".out";
             runcmd(cmd);
